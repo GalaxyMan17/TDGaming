@@ -12,6 +12,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private int baseEnemies = 8;
     [SerializeField] private float enemyPerSecond = .5f;
     [SerializeField] private float timeBetweenWaves = 5f;
+    [SerializeField] private float scalingFactor = .75f;
 
     private int currentWave = 1;
     private float timeSinceLastSpawn;
@@ -29,7 +30,7 @@ public class EnemySpawner : MonoBehaviour
 
     private int EnemiesPerWave()
     {
-        return Mathf.RoundToInt(baseEnemies * currentWave);
+        return Mathf.RoundToInt(baseEnemies * Mathf.Pow(currentWave, .75f));
     }
 
     // Update is called once per frame
